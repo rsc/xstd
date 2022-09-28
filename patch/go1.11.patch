@@ -1,0 +1,25 @@
+diff --git a/go1.11/unicode/letter_test.go b/go1.11/unicode/letter_test.go
+index 29c0956..6a17c3d 100644
+--- a/go1.11/unicode/letter_test.go
++++ b/go1.11/unicode/letter_test.go
+@@ -8,7 +8,6 @@ import (
+ 	"flag"
+ 	"fmt"
+ 	"runtime"
+-	"strings"
+ 	"testing"
+ 
+ 	"rsc.io/xstd/go1.11/sort"
+@@ -554,6 +553,7 @@ func TestLatinOffset(t *testing.T) {
+ 	}
+ }
+ 
++/*
+ func TestSpecialCaseNoMapping(t *testing.T) {
+ 	// Issue 25636
+ 	// no change for rune 'A', zero delta, under upper/lower/title case change.
+@@ -564,3 +564,4 @@ func TestSpecialCaseNoMapping(t *testing.T) {
+ 		t.Errorf("got %q; want %q", got, want)
+ 	}
+ }
++*/
