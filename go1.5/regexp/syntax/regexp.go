@@ -8,10 +8,9 @@ package syntax
 // In this package, re is always a *Regexp and r is always a rune.
 
 import (
-	"bytes"
-	"strings"
-
+	"rsc.io/xstd/go1.5/bytes"
 	"rsc.io/xstd/go1.5/strconv"
+	"rsc.io/xstd/go1.5/strings"
 	"rsc.io/xstd/go1.5/unicode"
 )
 

@@ -13,8 +13,9 @@ package testenv
 import (
 	"os"
 	"runtime"
-	"strings"
 	"testing"
+
+	"rsc.io/xstd/go1.5/strings"
 )
 
 // Builder reports the name of the builder running this test
