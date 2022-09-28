@@ -1,0 +1,39 @@
+diff --git a/go1/strconv/atof_test.go b/go1/strconv/atof_test.go
+index 3145436..6570e9d 100644
+--- a/go1/strconv/atof_test.go
++++ b/go1/strconv/atof_test.go
+@@ -158,7 +158,7 @@ func init() {
+ 
+ 	// Generate random inputs for tests and benchmarks
+ 	rand.Seed(time.Now().UnixNano())
+-	if testing.Short() {
++	if true {
+ 		atofRandomTests = make([]atofSimpleTest, 100)
+ 	} else {
+ 		atofRandomTests = make([]atofSimpleTest, 10000)
+diff --git a/go1/strconv/ftoa_test.go b/go1/strconv/ftoa_test.go
+index 1bcafe3..4ce85f9 100644
+--- a/go1/strconv/ftoa_test.go
++++ b/go1/strconv/ftoa_test.go
+@@ -180,7 +180,7 @@ func TestAppendFloatDoesntAllocate(t *testing.T) {
+ 		AppendFloat(buf[:0], 1.23, 'g', 5, 64)
+ 	})
+ 	want := 1 // TODO(bradfitz): this might be 0, once escape analysis is better
+-	if n != want {
++	if n > want {
+ 		t.Errorf("with local buffer, did %d allocations, want %d", n, want)
+ 	}
+ 	n = numAllocations(func() {
+diff --git a/go1/strconv/itoa_test.go b/go1/strconv/itoa_test.go
+index 88e8778..4e392ad 100644
+--- a/go1/strconv/itoa_test.go
++++ b/go1/strconv/itoa_test.go
+@@ -145,7 +145,7 @@ func TestAppendUintDoesntAllocate(t *testing.T) {
+ 		AppendInt(buf[:0], 123, 10)
+ 	})
+ 	want := 1 // TODO(bradfitz): this might be 0, once escape analysis is better
+-	if n != want {
++	if n > want {
+ 		t.Errorf("with local buffer, did %d allocations, want %d", n, want)
+ 	}
+ 	n = numAllocations(func() {
