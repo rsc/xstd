@@ -6,10 +6,10 @@ package regexp
 
 import (
 	"reflect"
-	"strings"
 	"testing"
 
 	"rsc.io/xstd/go1.6/regexp/syntax"
+	"rsc.io/xstd/go1.6/strings"
 )
 
 var good_re = []string{
