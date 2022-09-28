@@ -1,0 +1,13 @@
+diff --git a/go1.1/strconv/atof_test.go b/go1.1/strconv/atof_test.go
+index e2cbd44..176d340 100644
+--- a/go1.1/strconv/atof_test.go
++++ b/go1.1/strconv/atof_test.go
+@@ -213,7 +213,7 @@ func init() {
+ 
+ 	// Generate random inputs for tests and benchmarks
+ 	rand.Seed(time.Now().UnixNano())
+-	if testing.Short() {
++	if true {
+ 		atofRandomTests = make([]atofSimpleTest, 100)
+ 	} else {
+ 		atofRandomTests = make([]atofSimpleTest, 10000)
