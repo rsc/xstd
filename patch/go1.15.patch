@@ -1,87 +1,14 @@
-diff --git a/go1.12/unicode/letter_test.go b/go1.12/unicode/letter_test.go
-index 1291633..4eb0b73 100644
---- a/go1.12/unicode/letter_test.go
-+++ b/go1.12/unicode/letter_test.go
-@@ -553,6 +553,7 @@ func TestLatinOffset(t *testing.T) {
- 	}
- }
+diff --git a/go1.11/encoding/gob/type_test.go b/go1.11/encoding/gob/type_test.go
+index 998f5ac..d8c301f 100644
+--- a/go1.11/encoding/gob/type_test.go
++++ b/go1.11/encoding/gob/type_test.go
+@@ -178,6 +178,9 @@ func TestRegistrationNaming(t *testing.T) {
 
-+/*
- func TestSpecialCaseNoMapping(t *testing.T) {
- 	// Issue 25636
- 	// no change for rune 'A', zero delta, under upper/lower/title case change.
-@@ -563,3 +564,4 @@ func TestSpecialCaseNoMapping(t *testing.T) {
- 		t.Errorf("got %q; want %q", got, want)
- 	}
- }
-+*/
-diff --git a/go1.18/unicode/utf8/utf8.go b/go1.18/unicode/utf8/utf8.go
-index 6938c7e..5e4a2f2 100644
---- a/go1.18/unicode/utf8/utf8.go
-+++ b/go1.18/unicode/utf8/utf8.go
-@@ -26,25 +26,25 @@ const (
- )
+ 	for _, tc := range testCases {
+ 		Register(tc.t)
++		if true {
++			continue
++		}
 
- const (
--	t1 = 0b00000000
--	tx = 0b10000000
--	t2 = 0b11000000
--	t3 = 0b11100000
--	t4 = 0b11110000
--	t5 = 0b11111000
-+	t1 = 0x00
-+	tx = 0x80
-+	t2 = 0xc0
-+	t3 = 0xe0
-+	t4 = 0xf0
-+	t5 = 0xf8
-
--	maskx = 0b00111111
--	mask2 = 0b00011111
--	mask3 = 0b00001111
--	mask4 = 0b00000111
-+	maskx = 0x3f
-+	mask2 = 0x1f
-+	mask3 = 0x0f
-+	mask4 = 0x07
-
- 	rune1Max = 1<<7 - 1
- 	rune2Max = 1<<11 - 1
- 	rune3Max = 1<<16 - 1
-
- 	// The default lowest and highest continuation byte.
--	locb = 0b10000000
--	hicb = 0b10111111
-+	locb = 0x80
-+	hicb = 0xbf
-
- 	// These names of these constants are chosen to give nice alignment in the
- 	// table below. The first nibble is an index into acceptRanges or F for
-diff --git a/go1.18/strconv/atoc_test.go b/go1.18/strconv/atoc_test.go
-index 8180ad4..7f0d2aa 100644
---- a/go1.18/strconv/atoc_test.go
-+++ b/go1.18/strconv/atoc_test.go
-@@ -115,16 +115,16 @@ func TestParseComplex(t *testing.T) {
- 		{"0.1", 0.1, nil},
- 		{"0.1i", 0 + 0.1i, nil},
- 		{"0.1_2_3", 0.123, nil},
--		{"+0x_3p3i", 0x3p3i, nil},
-+		{"+0x_3p3i", 24i, nil},
- 		{"0_0+0x_0p0i", 0, nil},
--		{"0x_10.3p-8+0x3p3i", 0x10.3p-8 + 0x3p3i, nil},
--		{"+0x_1_0.3p-8+0x_3_0p3i", 0x10.3p-8 + 0x30p3i, nil},
--		{"0x1_0.3p+8-0x_3p3i", 0x10.3p+8 - 0x3p3i, nil},
-+		{"0x_10.3p-8+0x3p3i", 0.063232421875 + 24i, nil},
-+		{"+0x_1_0.3p-8+0x_3_0p3i", 0.063232421875 + 384i, nil},
-+		{"0x1_0.3p+8-0x_3p3i", 4144 - 24i, nil},
-
- 		// Hexadecimals
--		{"0x10.3p-8+0x3p3i", 0x10.3p-8 + 0x3p3i, nil},
--		{"+0x10.3p-8+0x3p3i", 0x10.3p-8 + 0x3p3i, nil},
--		{"0x10.3p+8-0x3p3i", 0x10.3p+8 - 0x3p3i, nil},
-+		{"0x10.3p-8+0x3p3i", 0.063232421875 + 24i, nil},
-+		{"+0x10.3p-8+0x3p3i", 0.063232421875 + 24i, nil},
-+		{"0x10.3p+8-0x3p3i", 4144 - 24i, nil},
- 		{"0x1p0", 1, nil},
- 		{"0x1p1", 2, nil},
- 		{"0x1p-1", 0.5, nil},
+ 		tct := reflect.TypeOf(tc.t)
+ 		ct, _ := nameToConcreteType.Load(tc.name)
