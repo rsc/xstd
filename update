@@ -26,7 +26,8 @@ cd $version
 go mod init rsc.io/xstd/$version
 go mod edit -go=1.11
 
-cp -a ../_go/src$pkg/{regexp,sort,strconv,unicode} .
+cp -a ../_go/src$pkg/{regexp,sort,strconv,unicode,strings,bytes,io,encoding,text,html} .
+rm -rf encoding/asn1
 for x in testenv cpu cfg godebug; do
 	if [ -d ../_go/src$pkg/internal/$x ]; then
 		mkdir -p internal
@@ -47,10 +48,12 @@ if [ -d ../_go/src$pkg/internal/bytealg ]; then
 fi
 echo '
 X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"internal/reflectlite";reflectlite "reflect";g
-X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"(strconv|regexp|regexp/syntax|sort|unicode/utf16|unicode/utf8|unicode|internal/godebug|internal/testenv|internal/bytealg|internal/cpu|internal/cfg)";"rsc.io/xstd/'$version'/\1";g
+X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"(strings|bytes|text/template|text/template/parse|encoding/json|encoding/gob|encoding/xml|encoding/base64|encoding/base32|encoding/binary|encoding/csv|encoding|html/template|html|strconv|regexp|regexp/syntax|sort|unicode/utf16|unicode/utf8|unicode|internal/godebug|internal/testenv|internal/bytealg|internal/cpu|internal/cfg|io|io/ioutil)";"rsc.io/xstd/'$version'/\1";g
 X/'"'"'/w
 ' | sam -d $(find . -name '*.go')
+rm -f bytes/*.s
 goimports -w .
+git add .
 
 patch=""
 if [ -e ../patch/$version.patch ]; then
@@ -70,4 +73,5 @@ git add .
 go test -vet=off ./...
 
 V=$(echo $version | sed 's/go//')
-git commit -m "$version: $verb Go $V" . $patch
+git commit -m "$version: $verb Go $V" . $patch || true
+
