@@ -1,17 +1,27 @@
-diff --git a/go1.12/unicode/letter_test.go b/go1.12/unicode/letter_test.go
-index 1291633..4eb0b73 100644
---- a/go1.12/unicode/letter_test.go
-+++ b/go1.12/unicode/letter_test.go
-@@ -553,6 +553,7 @@ func TestLatinOffset(t *testing.T) {
- 	}
- }
+diff --git a/go1.11/encoding/gob/codec_test.go b/go1.11/encoding/gob/codec_test.go
+index 7f093e6..73022ee 100644
+--- a/go1.11/encoding/gob/codec_test.go
++++ b/go1.11/encoding/gob/codec_test.go
+@@ -1466,6 +1466,8 @@ func testFuzz(t *testing.T, seed int64, n int, input ...interface{}) {
+ // TestFuzzOneByte tries to decode corrupted input sequences
+ // and checks that no panic occurs.
+ func TestFuzzOneByte(t *testing.T) {
++	t.Skip("buggy")
++
+ 	buf := new(bytes.Buffer)
+ 	Register(OnTheFly{})
+ 	dt := newDT()
+diff --git a/go1.11/encoding/gob/type_test.go b/go1.11/encoding/gob/type_test.go
+index 998f5ac..d8c301f 100644
+--- a/go1.11/encoding/gob/type_test.go
++++ b/go1.11/encoding/gob/type_test.go
+@@ -178,6 +178,9 @@ func TestRegistrationNaming(t *testing.T) {
 
-+/*
- func TestSpecialCaseNoMapping(t *testing.T) {
- 	// Issue 25636
- 	// no change for rune 'A', zero delta, under upper/lower/title case change.
-@@ -563,3 +564,4 @@ func TestSpecialCaseNoMapping(t *testing.T) {
- 		t.Errorf("got %q; want %q", got, want)
- 	}
- }
-+*/
+ 	for _, tc := range testCases {
+ 		Register(tc.t)
++		if true {
++			continue
++		}
+
+ 		tct := reflect.TypeOf(tc.t)
+ 		ct, _ := nameToConcreteType.Load(tc.name)

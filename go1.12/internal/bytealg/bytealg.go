@@ -10,10 +10,39 @@ import (
 )
 
 func Compare(a, b []byte) int              { return bytes.Compare(a, b) }
-func Count(b, c []byte) int                { return bytes.Count(b, c) }
-func CountString(s, c string) int          { return strings.Count(s, c) }
 func Equal(a, b []byte) bool               { return bytes.Equal(a, b) }
 func Index(a, b []byte) int                { return bytes.Index(a, b) }
 func IndexByte(b []byte, c byte) int       { return bytes.IndexByte(b, c) }
 func IndexByteString(s string, c byte) int { return strings.IndexByte(s, c) }
 func IndexString(a, b string) int          { return strings.Index(a, b) }
+
+const (
+	MaxBruteForce = 64
+	PrimeRK       = 16777619
+	MaxLen        = 31
+)
+
+func Cutover(n int) int {
+	// 1 error per 8 characters, plus a few slop to start.
+	return (n + 16) / 8
+}
+
+func CountString(s string, c byte) int {
+	n := 0
+	for i := 0; i < len(s); i++ {
+		if s[i] == c {
+			n++
+		}
+	}
+	return n
+}
+
+func Count(b []byte, c byte) int {
+	n := 0
+	for _, x := range b {
+		if x == c {
+			n++
+		}
+	}
+	return n
+}
