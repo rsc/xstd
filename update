@@ -1,0 +1,73 @@
+#!/bin/bash
+
+set -e
+
+if [ ! -d _go ]; then
+	git clone https://go.googlesource.com/go _go
+fi
+
+version=$1
+
+cd _go
+git checkout $version
+pkg=""
+if [ -d ./src/pkg ]; then
+	pkg="/pkg"
+fi
+cd ..
+
+verb="add"
+if [ -d $version ]; then
+	verb="update"
+	rm -rf $version
+fi
+mkdir $version
+cd $version
+go mod init rsc.io/xstd/$version
+go mod edit -go=1.11
+
+cp -a ../_go/src$pkg/{regexp,sort,strconv,unicode} .
+for x in testenv cpu cfg godebug; do
+	if [ -d ../_go/src$pkg/internal/$x ]; then
+		mkdir -p internal
+		cp -a ../_go/src$pkg/internal/$x internal
+		if [ $x = cpu ]; then
+			if grep func.Initialize internal/cpu/cpu.go >/dev/null; then
+				cp ../cpuinit2.go.txt internal/cpu/cpuinit.go
+			fi
+			if grep func.initialize internal/cpu/cpu.go >/dev/null; then
+				cp ../cpuinit.go.txt internal/cpu/cpuinit.go
+			fi
+		fi
+	fi
+done
+if [ -d ../_go/src$pkg/internal/bytealg ]; then
+	mkdir -p internal/bytealg
+	cp ../bytealg.go.txt internal/bytealg/bytealg.go
+fi
+echo '
+X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"internal/reflectlite";reflectlite "reflect";g
+X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"(strconv|regexp|regexp/syntax|sort|unicode/utf16|unicode/utf8|unicode|internal/godebug|internal/testenv|internal/bytealg|internal/cpu|internal/cfg)";"rsc.io/xstd/'$version'/\1";g
+X/'"'"'/w
+' | sam -d $(find . -name '*.go')
+goimports -w .
+
+patch=""
+if [ -e ../patch/$version.patch ]; then
+	patch=../patch/$version.patch
+else
+	v=$(echo $version | sed 's/\.[0-9]*$//; s/\.0$//')
+	if [ -e ../patch/$v.patch ]; then
+		patch=../patch/$v.patch
+	fi
+fi
+if [ "$patch" != "" ]; then
+	patch -p2 < $patch
+	git add $patch
+fi
+goimports -w .
+git add .
+go test -vet=off ./...
+
+V=$(echo $version | sed 's/go//')
+git commit -m "$version: $verb Go $V" . $patch
