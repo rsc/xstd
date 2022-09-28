@@ -13,13 +13,14 @@
 package main
 
 import (
-	"bytes"
 	"flag"
 	"fmt"
 	"go/format"
 	"log"
 	"os"
-	"text/template"
+
+	"rsc.io/xstd/go1.19/bytes"
+	"rsc.io/xstd/go1.19/text/template"
 )
 
 type Variant struct {

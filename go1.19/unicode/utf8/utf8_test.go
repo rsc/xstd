@@ -5,10 +5,10 @@
 package utf8_test
 
 import (
-	"bytes"
-	"strings"
 	"testing"
 
+	"rsc.io/xstd/go1.19/bytes"
+	"rsc.io/xstd/go1.19/strings"
 	"rsc.io/xstd/go1.19/unicode"
 	. "rsc.io/xstd/go1.19/unicode/utf8"
 )
@@ -628,7 +628,7 @@ var longStringJapanese string    // ~100KB, non-ASCII
 func init() {
 	const japanese = "日本語日本語日本語日"
 	var b bytes.Buffer
-	for i := 0; b.Len() < 100000; i++ {
+	for i := 0; b.Len() < 100_000; i++ {
 		if i%100 == 0 {
 			b.WriteString(japanese)
 		} else {
@@ -636,7 +636,7 @@ func init() {
 		}
 	}
 	longStringMostlyASCII = b.String()
-	longStringJapanese = strings.Repeat(japanese, 100000/len(japanese))
+	longStringJapanese = strings.Repeat(japanese, 100_000/len(japanese))
 }
 
 func BenchmarkEncodeASCIIRune(b *testing.B) {

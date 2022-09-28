@@ -5,9 +5,8 @@
 package syntax
 
 import (
-	"strings"
-
 	"rsc.io/xstd/go1.19/strconv"
+	"rsc.io/xstd/go1.19/strings"
 	"rsc.io/xstd/go1.19/unicode"
 	"rsc.io/xstd/go1.19/unicode/utf8"
 )

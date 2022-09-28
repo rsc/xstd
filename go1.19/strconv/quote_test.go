@@ -5,10 +5,10 @@
 package strconv_test
 
 import (
-	"strings"
 	"testing"
 
 	. "rsc.io/xstd/go1.19/strconv"
+	"rsc.io/xstd/go1.19/strings"
 	"rsc.io/xstd/go1.19/unicode"
 )
 
