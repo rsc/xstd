@@ -14,17 +14,17 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"io"
 	"log"
 	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"strings"
 
+	"rsc.io/xstd/go1.12.7/io"
 	"rsc.io/xstd/go1.12.7/regexp"
 	"rsc.io/xstd/go1.12.7/sort"
 	"rsc.io/xstd/go1.12.7/strconv"
+	"rsc.io/xstd/go1.12.7/strings"
 	"rsc.io/xstd/go1.12.7/unicode"
 )
 

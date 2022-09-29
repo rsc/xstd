@@ -6,10 +6,10 @@ package strconv_test
 
 import (
 	"runtime"
-	"strings"
 	"testing"
 
 	. "rsc.io/xstd/go1.12.7/strconv"
+	"rsc.io/xstd/go1.12.7/strings"
 )
 
 var (
