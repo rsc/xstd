@@ -5,11 +5,12 @@
 package testenv
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"sync"
 	"syscall"
+
+	"rsc.io/xstd/go1.15.5/io/ioutil"
 )
 
 var symlinkOnce sync.Once
