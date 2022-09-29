@@ -16,14 +16,14 @@
 package main
 
 import (
-	"bytes"
 	"go/ast"
 	"go/format"
 	"go/parser"
 	"go/token"
-	"io/ioutil"
 	"log"
 
+	"rsc.io/xstd/go1.12.17/bytes"
+	"rsc.io/xstd/go1.12.17/io/ioutil"
 	"rsc.io/xstd/go1.12.17/regexp"
 )
 
