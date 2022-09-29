@@ -5,10 +5,10 @@
 package syntax
 
 import (
-	"bytes"
 	"fmt"
 	"testing"
 
+	"rsc.io/xstd/go1.9.4/bytes"
 	"rsc.io/xstd/go1.9.4/unicode"
 )
 

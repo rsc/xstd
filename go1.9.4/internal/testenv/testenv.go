@@ -17,10 +17,10 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
-	"strings"
 	"testing"
 
 	"rsc.io/xstd/go1.9.4/strconv"
+	"rsc.io/xstd/go1.9.4/strings"
 )
 
 // Builder reports the name of the builder running this test
