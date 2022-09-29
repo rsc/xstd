@@ -6,9 +6,9 @@ package regexp_test
 
 import (
 	"fmt"
-	"strings"
 
 	"rsc.io/xstd/go1.15.1/regexp"
+	"rsc.io/xstd/go1.15.1/strings"
 )
 
 func Example() {
