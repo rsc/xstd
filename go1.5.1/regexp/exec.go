@@ -5,8 +5,7 @@
 package regexp
 
 import (
-	"io"
-
+	"rsc.io/xstd/go1.5.1/io"
 	"rsc.io/xstd/go1.5.1/regexp/syntax"
 )
 
