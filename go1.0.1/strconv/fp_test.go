@@ -7,12 +7,12 @@ package strconv_test
 import (
 	"bufio"
 	"fmt"
-	"io"
 	"os"
-	"strings"
 	"testing"
 
+	"rsc.io/xstd/go1.0.1/io"
 	"rsc.io/xstd/go1.0.1/strconv"
+	"rsc.io/xstd/go1.0.1/strings"
 )
 
 func pow2(i int) float64 {
