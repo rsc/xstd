@@ -6,10 +6,10 @@ package cpu_test
 
 import (
 	"errors"
-	"io/ioutil"
 	"testing"
 
 	. "rsc.io/xstd/go1.14.10/internal/cpu"
+	"rsc.io/xstd/go1.14.10/io/ioutil"
 	"rsc.io/xstd/go1.14.10/regexp"
 )
 
