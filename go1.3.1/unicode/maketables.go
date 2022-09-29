@@ -18,11 +18,11 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"rsc.io/xstd/go1.3.1/regexp"
 	"rsc.io/xstd/go1.3.1/sort"
 	"rsc.io/xstd/go1.3.1/strconv"
+	"rsc.io/xstd/go1.3.1/strings"
 	"rsc.io/xstd/go1.3.1/unicode"
 )
 
