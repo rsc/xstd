@@ -1,3 +1,3 @@
 module rsc.io/xstd/go1.2.2
 
-go 1.11
+go 1.16

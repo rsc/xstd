@@ -5,8 +5,7 @@
 package syntax
 
 import (
-	"bytes"
-
+	"rsc.io/xstd/go1.2.2/bytes"
 	"rsc.io/xstd/go1.2.2/strconv"
 	"rsc.io/xstd/go1.2.2/unicode"
 )
