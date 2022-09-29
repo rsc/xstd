@@ -5,9 +5,9 @@
 package strconv_test
 
 import (
-	"bytes"
 	"testing"
 
+	"rsc.io/xstd/go1.14.15/bytes"
 	. "rsc.io/xstd/go1.14.15/strconv"
 )
 
