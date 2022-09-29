@@ -8,12 +8,12 @@ import (
 	"math"
 	"math/rand"
 	"reflect"
-	"strings"
 	"sync"
 	"testing"
 	"time"
 
 	. "rsc.io/xstd/go1.10.2/strconv"
+	"rsc.io/xstd/go1.10.2/strings"
 )
 
 type atofTest struct {
