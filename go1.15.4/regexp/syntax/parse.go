@@ -5,9 +5,8 @@
 package syntax
 
 import (
-	"strings"
-
 	"rsc.io/xstd/go1.15.4/sort"
+	"rsc.io/xstd/go1.15.4/strings"
 	"rsc.io/xstd/go1.15.4/unicode"
 	"rsc.io/xstd/go1.15.4/unicode/utf8"
 )
