@@ -1,0 +1,11 @@
+#!/bin/bash
+
+versions=$(cd _go && git tag -l | grep '^go1' | egrep -v 'beta|rc' | tr '.' ' ' | 9 sort -n +1 | tr ' ' '.')
+echo $tags
+
+for v in $versions; do
+	if ! ./update $v; then
+		echo FAIL $v >&2
+		# exit 1
+	fi
+done
