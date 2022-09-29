@@ -6,10 +6,10 @@ package regexp
 
 import (
 	"reflect"
-	"strings"
 	"testing"
 
 	"rsc.io/xstd/go1.11.7/regexp/syntax"
+	"rsc.io/xstd/go1.11.7/strings"
 )
 
 var runeMergeTests = []struct {
