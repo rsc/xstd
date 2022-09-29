@@ -66,13 +66,13 @@
 package regexp
 
 import (
-	"bytes"
-	"io"
-	"strings"
 	"sync"
 
+	"rsc.io/xstd/go1.13.11/bytes"
+	"rsc.io/xstd/go1.13.11/io"
 	"rsc.io/xstd/go1.13.11/regexp/syntax"
 	"rsc.io/xstd/go1.13.11/strconv"
+	"rsc.io/xstd/go1.13.11/strings"
 	"rsc.io/xstd/go1.13.11/unicode"
 	"rsc.io/xstd/go1.13.11/unicode/utf8"
 )

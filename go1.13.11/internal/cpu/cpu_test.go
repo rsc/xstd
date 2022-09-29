@@ -8,11 +8,11 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
-	"strings"
 	"testing"
 
 	. "rsc.io/xstd/go1.13.11/internal/cpu"
 	"rsc.io/xstd/go1.13.11/internal/testenv"
+	"rsc.io/xstd/go1.13.11/strings"
 )
 
 func TestMinimalFeatures(t *testing.T) {
