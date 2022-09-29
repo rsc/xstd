@@ -5,9 +5,9 @@
 package utf8_test
 
 import (
-	"bytes"
 	"testing"
 
+	"rsc.io/xstd/go1.12.1/bytes"
 	"rsc.io/xstd/go1.12.1/unicode"
 	. "rsc.io/xstd/go1.12.1/unicode/utf8"
 )
