@@ -6,10 +6,10 @@ package regexp
 
 import (
 	"reflect"
-	"strings"
 	"testing"
 
 	"rsc.io/xstd/go1.12.16/regexp/syntax"
+	"rsc.io/xstd/go1.12.16/strings"
 	"rsc.io/xstd/go1.12.16/unicode/utf8"
 )
 
