@@ -6,8 +6,9 @@ package regexp
 
 import (
 	"fmt"
-	"strings"
 	"testing"
+
+	"rsc.io/xstd/go1.12.15/strings"
 )
 
 // For each pattern/text pair, what is the expected output of each function?
