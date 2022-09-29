@@ -5,10 +5,9 @@
 package regexp
 
 import (
-	"strings"
-
 	"rsc.io/xstd/go1.12.2/regexp/syntax"
 	"rsc.io/xstd/go1.12.2/sort"
+	"rsc.io/xstd/go1.12.2/strings"
 	"rsc.io/xstd/go1.12.2/unicode"
 )
 
