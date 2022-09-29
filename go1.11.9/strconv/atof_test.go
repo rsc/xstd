@@ -8,12 +8,12 @@ import (
 	"math"
 	"math/rand"
 	"reflect"
-	"strings"
 	"sync"
 	"testing"
 	"time"
 
 	. "rsc.io/xstd/go1.11.9/strconv"
+	"rsc.io/xstd/go1.11.9/strings"
 )
 
 type atofTest struct {
@@ -243,7 +243,7 @@ func initAtofOnce() {
 
 	// Generate random inputs for tests and benchmarks
 	rand.Seed(time.Now().UnixNano())
-	if testing.Short() {
+	if true {
 		atofRandomTests = make([]atofSimpleTest, 100)
 	} else {
 		atofRandomTests = make([]atofSimpleTest, 10000)
