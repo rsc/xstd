@@ -24,11 +24,11 @@ fi
 mkdir $version
 cd $version
 go mod init rsc.io/xstd/$version
-go mod edit -go=1.11
+go mod edit -go=1.16
 
 cp -a ../_go/src$pkg/{regexp,sort,strconv,unicode,strings,bytes,io,encoding,text,html} .
-rm -rf encoding/asn1
-for x in testenv cpu cfg godebug; do
+rm -rf encoding/asn1 io/fs
+for x in testenv cpu cfg godebug fmtsort; do
 	if [ -d ../_go/src$pkg/internal/$x ]; then
 		mkdir -p internal
 		cp -a ../_go/src$pkg/internal/$x internal
@@ -47,11 +47,41 @@ if [ -d ../_go/src$pkg/internal/bytealg ]; then
 	cp ../bytealg.go.txt internal/bytealg/bytealg.go
 fi
 echo '
+X/io\/io.go/ ,s/type ([A-Z].*) interface {\n([^}].*\n)+\}/type \1 = io.\1/g
+X/io\/io.go/ ,s/var ([A-Z][^ ]*)( [^ ]*)? = (.*)/var \1\2 = io.\1/g
 X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"internal/reflectlite";reflectlite "reflect";g
-X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"(strings|bytes|text/template|text/template/parse|encoding/json|encoding/gob|encoding/xml|encoding/base64|encoding/base32|encoding/binary|encoding/csv|encoding|html/template|html|strconv|regexp|regexp/syntax|sort|unicode/utf16|unicode/utf8|unicode|internal/godebug|internal/testenv|internal/bytealg|internal/cpu|internal/cfg|io|io/ioutil)";"rsc.io/xstd/'$version'/\1";g
+X ,x/import (\. )?"(.*)"|^	(\. )?"(.*)"( *\/\/.*)?$/ s;"(strings|bytes|text/template|text/template/parse|encoding/json|encoding/gob|encoding/xml|encoding/base64|encoding/base32|encoding/binary|encoding/csv|encoding|html/template|html|strconv|regexp|regexp/syntax|sort|unicode/utf16|unicode/utf8|unicode|internal/godebug|internal/testenv|internal/bytealg|internal/fmtsort|internal/cpu|internal/cfg|io|io/ioutil|text/tabwriter|text/scanner)";"rsc.io/xstd/'$version'/\1";g
 X/'"'"'/w
 ' | sam -d $(find . -name '*.go')
-rm -f bytes/*.s
+rm -f bytes/*.s {strings/strings,bytes/bytes}_{amd64,s390x,arm64}.go
+goimports -w .
+xtest='
+	encoding/binary/example_test.go
+	internal/fmtsort/sort_test.go
+	html/template/template_test.go
+	bytes/reader_test.go
+	encoding/json/example_test.go
+	strings/reader_test.go
+'
+if grep 'func Slice.x.any' sort/*.go >/dev/null; then
+	for i in $(go list ./... | sed 's;^rsc.io/xstd/go[^/]*;.;'); do
+		pkg=$(echo $i | sed 's;.*/;;')
+		echo "
+			// Copyright 2022 The Go Authors. All rights reserved.
+			// Use of this source code is governed by a BSD-style
+			// license that can be found in the LICENSE file.
+
+			package $pkg
+
+			type any = interface{}
+		" >$i/any.go
+	done
+	for i in $xtest; do
+		if [ -f $i ]; then
+			echo 'type any = interface{}' >> $i
+		fi
+	done
+fi
 goimports -w .
 git add .
 
