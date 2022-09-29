@@ -6,9 +6,9 @@ package syntax
 
 import (
 	"fmt"
-	"strings"
 	"testing"
 
+	"rsc.io/xstd/go1.15.12/strings"
 	"rsc.io/xstd/go1.15.12/unicode"
 )
 
