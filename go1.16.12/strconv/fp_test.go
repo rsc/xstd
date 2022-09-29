@@ -8,10 +8,10 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
 	"testing"
 
 	"rsc.io/xstd/go1.16.12/strconv"
+	"rsc.io/xstd/go1.16.12/strings"
 )
 
 func pow2(i int) float64 {
