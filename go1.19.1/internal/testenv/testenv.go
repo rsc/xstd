@@ -11,7 +11,6 @@
 package testenv
 
 import (
-	"bytes"
 	"errors"
 	"flag"
 	"fmt"
@@ -19,13 +18,14 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
-	"strings"
 	"sync"
 	"testing"
 	"time"
 
+	"rsc.io/xstd/go1.19.1/bytes"
 	"rsc.io/xstd/go1.19.1/internal/cfg"
 	"rsc.io/xstd/go1.19.1/strconv"
+	"rsc.io/xstd/go1.19.1/strings"
 )
 
 // Builder reports the name of the builder running this test
