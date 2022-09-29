@@ -11,6 +11,7 @@ import (
 	"testing"
 
 	"rsc.io/xstd/go1.15.15/sort"
+	"rsc.io/xstd/go1.15.15/strings"
 	. "rsc.io/xstd/go1.15.15/unicode"
 )
 
@@ -553,7 +554,6 @@ func TestLatinOffset(t *testing.T) {
 	}
 }
 
-/*
 func TestSpecialCaseNoMapping(t *testing.T) {
 	// Issue 25636
 	// no change for rune 'A', zero delta, under upper/lower/title case change.
@@ -564,4 +564,3 @@ func TestSpecialCaseNoMapping(t *testing.T) {
 		t.Errorf("got %q; want %q", got, want)
 	}
 }
-*/
