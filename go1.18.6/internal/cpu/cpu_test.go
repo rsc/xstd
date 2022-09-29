@@ -7,12 +7,12 @@ package cpu_test
 import (
 	"os"
 	"os/exec"
-	"strings"
 	"testing"
 
 	. "rsc.io/xstd/go1.18.6/internal/cpu"
 	"rsc.io/xstd/go1.18.6/internal/godebug"
 	"rsc.io/xstd/go1.18.6/internal/testenv"
+	"rsc.io/xstd/go1.18.6/strings"
 )
 
 func MustHaveDebugOptionsSupport(t *testing.T) {
