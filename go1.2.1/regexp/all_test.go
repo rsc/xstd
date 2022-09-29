@@ -6,8 +6,9 @@ package regexp
 
 import (
 	"reflect"
-	"strings"
 	"testing"
+
+	"rsc.io/xstd/go1.2.1/strings"
 )
 
 var good_re = []string{
