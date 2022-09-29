@@ -16,7 +16,6 @@
 package main
 
 import (
-	"bytes"
 	"go/ast"
 	"go/format"
 	"go/parser"
@@ -24,6 +23,7 @@ import (
 	"log"
 	"os"
 
+	"rsc.io/xstd/go1.17.7/bytes"
 	"rsc.io/xstd/go1.17.7/regexp"
 )
 
