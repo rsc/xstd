@@ -14,13 +14,13 @@
 package main
 
 import (
-	"bytes"
 	"flag"
 	"fmt"
 	"go/format"
-	"io/ioutil"
 	"log"
 
+	"rsc.io/xstd/go1.13.6/bytes"
+	"rsc.io/xstd/go1.13.6/io/ioutil"
 	"rsc.io/xstd/go1.13.6/unicode"
 )
 
