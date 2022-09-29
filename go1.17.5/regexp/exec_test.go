@@ -8,15 +8,15 @@ import (
 	"bufio"
 	"compress/bzip2"
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
-	"strings"
 	"testing"
 
 	"rsc.io/xstd/go1.17.5/internal/testenv"
+	"rsc.io/xstd/go1.17.5/io"
 	"rsc.io/xstd/go1.17.5/regexp/syntax"
 	"rsc.io/xstd/go1.17.5/strconv"
+	"rsc.io/xstd/go1.17.5/strings"
 	"rsc.io/xstd/go1.17.5/unicode/utf8"
 )
 
