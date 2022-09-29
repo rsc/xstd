@@ -5,8 +5,7 @@
 package regexp
 
 import (
-	"bytes"
-
+	"rsc.io/xstd/go1.9.5/bytes"
 	"rsc.io/xstd/go1.9.5/regexp/syntax"
 	"rsc.io/xstd/go1.9.5/sort"
 	"rsc.io/xstd/go1.9.5/unicode"
